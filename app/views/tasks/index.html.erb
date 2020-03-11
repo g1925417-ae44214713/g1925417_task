@@ -5,17 +5,18 @@
 
 <table>
   <thead>
+    <ul>
     <% @tasks.each do |task| %>
     <tr>
-      <td><%= task.title %></td>
-      <td>|</td>
+      <td><li><%= link_to task.title, task_path(task) %></li></td>
       <!-- <td><%= task.body %></td> -->
       <%# <th>タイトル</th> %>
-      <td><%= link_to "削除", tasks_path, method: :delete, data: { confirm: '削除してもいいですか?' } %></td>
+      <td>|<%= link_to "削除", tasks_path, method: :delete, data: { confirm: '削除してもいいですか?' } %></li></td>
       <%# <th>内容</th> %>
       <td colspan="3"></td>
     </tr>
     <% end %>
+    </ul>
   </thead>
 
 
@@ -27,19 +28,10 @@
       </tr>
   </tbody> -->
 </table>
+
   <hr>
 
 <h2>タスク登録</h2>
-<%= form_with model: @task, local: true do |form| %>
-  <p>
-    タイトル<br>
-    <%= form.text_field :title %>
-  </p>
-  <p>
-    内容<br>
-    <%= form.text_area :body %>
-  </p>
 
-<%= form.submit "Create Task" %>
-<!-- <%= link_to 'Create Task', tasks_path %> -->
-<% end %>
+<%= render 'form', task: @task %>
+

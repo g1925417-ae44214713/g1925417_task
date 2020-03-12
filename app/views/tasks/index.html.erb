@@ -4,20 +4,25 @@
 
 
 <table>
-  <thead>
+  <%# <thead> %>
     <ul>
     <% @tasks.each do |task| %>
     <tr>
-      <td><li><%= link_to task.title, task_path(task) %></li></td>
+      <%# <td> %>
+      <li>
+      <%= link_to task.title, task_path(task) %>
       <!-- <td><%= task.body %></td> -->
       <%# <th>タイトル</th> %>
-      <td>|<%= link_to "削除", tasks_path, method: :delete, data: { confirm: '削除してもいいですか?' } %></li></td>
+      |<%= link_to "削除", task_path(task), method: :delete, data: { confirm: "削除してよろしいですか?" } %>
+      </li>
+      <%# </td> %>
       <%# <th>内容</th> %>
-      <td colspan="3"></td>
+      <%# <td colspan="3"></td> %>
     </tr>
-    <% end %>
     </ul>
-  </thead>
+    <% end %>
+  <%# </thead> %>
+</table>
 
 
   <!-- <tbody>
@@ -27,7 +32,6 @@
         <%# <td><%= link_to '削除', task, method: :delete, data: { confirm: '削除してもいいですか?' } %></td> %>
       </tr>
   </tbody> -->
-</table>
 
   <hr>
 

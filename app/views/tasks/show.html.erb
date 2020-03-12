@@ -12,6 +12,6 @@
   <%= @task.body %>
 </p>
 
-<%= link_to '編集', edit_task_path(@task) %> 
-<%= link_to '削除', tasks_path, method: :delete, data: { confirm: '削除してもいいですか?' } %>
-<%= link_to '戻る', tasks_path %>
+<%= link_to "編集", edit_task_path(@task) %> 
+<%= link_to "削除", task_path(@task), method: :delete, data: { confirm: "削除してよろしいですか?" } %>
+<%= link_to "戻る", tasks_path%>

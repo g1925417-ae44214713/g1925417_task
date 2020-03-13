@@ -13,10 +13,10 @@ class TasksController < ApplicationController
   def show
   end
 
-  # GET /tasks/new
-  def new
-    @task = Task.new
-  end
+  # # GET /tasks/new
+  # def new
+  #   @task = Task.new
+  # end
 
   # GET /tasks/1/edit
   def edit
@@ -26,12 +26,13 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @tasks = Task.all
     respond_to do |format|
       if @task.save
         format.html { redirect_to tasks_path }
         format.json { render :show, status: :created, location: @task }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -54,7 +55,6 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @tasks = Task.all
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_path }
